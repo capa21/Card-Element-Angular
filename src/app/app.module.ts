@@ -1,16 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { Injector, NgModule } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
 
+import { CardComponent } from './components/card/card.component';
 import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
-  ],
+    AppComponent,
+    CardComponent
+   ],
   imports: [
     BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  entryComponents: [CardComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(
+    private injector: Injector
+  ) {
+      const characterComponent = createCustomElement(CardComponent, { injector });
+      customElements.define('character-component', characterComponent);
+    }
+  ngDoBootstrap(): void {}
+}

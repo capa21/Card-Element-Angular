@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --output-hashing=none && mkdir dist/unificado && cat dist/card-element/{runtime,polyfills,main}.js > dist/unificado/card-element.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -15,10 +15,12 @@
     "@angular/common": "~10.0.0",
     "@angular/compiler": "~10.0.0",
     "@angular/core": "~10.0.0",
+    "@angular/elements": "^10.0.14",
     "@angular/forms": "~10.0.0",
     "@angular/platform-browser": "~10.0.0",
     "@angular/platform-browser-dynamic": "~10.0.0",
     "@angular/router": "~10.0.0",
+    "document-register-element": "^1.7.2",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
